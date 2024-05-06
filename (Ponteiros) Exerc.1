@@ -1,0 +1,25 @@
+#include <stdio.h>
+
+int main () {
+  
+int num1= 10, *p, q =0; float num2=20, *m, x=0; char num3= 'a', *y, o=0;
+
+  q = num1;
+  p= &num1;
+  *p= 5;
+
+  x= num2;
+  m = &num2;
+  *m= 30;
+
+  o = num3;
+  y= &num3;
+  *y= 'b';
+
+  printf("Valor anterior: %d \nValor real: %d", q,*p);
+  
+  printf("\nValor anterior: %f \nValor real: %f", x,*m);
+  
+  printf("\nValor anterior: %c \nValor real: %c", o,*y);
+
+}
