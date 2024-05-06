@@ -1,0 +1,14 @@
+#include <stdio.h>
+
+int main(void) {
+ int num1=0, num2=0, *p, *m;
+
+  p= &num1;
+  m= &num2; 
+  if (p > m) {
+    printf ("Maior espaço numero 1: %p", p);
+  } else {
+    printf ("Maior espaço numero 2: %p", m);
+    
+  }
+}
