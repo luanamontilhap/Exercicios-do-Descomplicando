@@ -1,0 +1,19 @@
+#include <stdio.h>
+
+int main(void) {
+  int num1, num2; int *p, *m;
+
+  printf("Digite o valor da primeira variável: ");
+  scanf("%d", &num1);
+  printf("Digite o valor da segunda variável: ");
+  scanf("%d", &num2);
+  
+  p= &num1;
+  m= &num2;
+  
+  if ( p>m) {
+    printf ("Maior endereço: %d", *p);
+  } else {
+    printf ("Maior endereço: %d", *m);
+  }
+}
