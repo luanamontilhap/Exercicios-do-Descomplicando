@@ -1,0 +1,21 @@
+#include <stdio.h>
+
+void maior(int *num1, int *num2){
+  int temp=0;
+  if(*num1 < *num2){
+        temp = *num2;
+        *num2= *num1;
+        *num1 = temp;
+  }
+    
+}
+
+int main(void) {
+  int num1=0 , num2=0; 
+  
+  printf("Digite dois números: \n");
+  scanf ("%d %d", &num1, &num2);
+  
+    maior (&num1,&num2);
+  printf ("Número maior %d, Número menor: %d", num1, num2);
+}
