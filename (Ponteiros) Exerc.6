@@ -1,0 +1,27 @@
+#include <stdio.h>
+
+int operacao (int *varA, int *varB) {
+  
+      *varA = *varA * 2;
+      *varB = *varB * 2;
+  
+        return (*varA + *varB);
+        
+}
+
+int main(void) {
+  
+int varA , varB; 
+
+  printf ("Digite dois números: ");
+  scanf ("%d", &varA);
+  scanf ("%d", &varB);
+
+ int resultado = operacao (&varA, &varB);
+  
+printf ("O resultado do dobro da soma: %d", resultado);
+
+
+
+  
+}
