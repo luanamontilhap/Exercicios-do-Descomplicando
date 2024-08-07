@@ -1,0 +1,113 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+// Estrutura para um nó da árvore binária
+struct Node {
+    int data;
+    struct Node* left;
+    struct Node* right;
+};
+
+// Função para criar um novo nó
+struct Node* novoNode(int data) {
+    struct Node* node = (struct Node*)malloc(sizeof(struct Node));
+    node->data = data;
+    node->left = NULL;
+    node->right = NULL;
+    return node;
+}
+
+// Função para inserir um novo nó na árvore binária
+struct Node* inserir(struct Node* root, int data) {
+    if (root == NULL) {
+        return novoNode(data);
+    }
+    if (data < root->data) {
+        root->left = inserir(root->left, data);
+    } else {
+        root->right = inserir(root->right, data);
+    }
+    return root;
+}
+
+// Função para contar o número total de nós na árvore
+int countNodes(struct Node* root, int *c) {
+    
+    if (root == NULL) {
+        return 0;
+    }
+
+    (*c)++;
+
+    countNodes(root->left, c);
+    countNodes(root->right, c);
+    return 0;
+}
+
+// Função para achar o maior numero
+int findMax(struct Node* root, int *c) {
+    
+    if (root == NULL) {
+        return 0;
+    }
+    if (root->data > *c) {
+        *c = root->data;
+    }
+
+    findMax(root->left, c);
+    findMax(root->right, c);
+    return 0;
+}
+
+
+
+// Função para contar o número de folhas na árvore
+int countLef(struct Node* root, int *c) {
+    if (root == NULL) {
+        return 0;
+    }
+    if (root->left == NULL && root->right == NULL) {
+        (*c)++;
+        return 1;
+    }
+    countLef(root->left, c);
+    countLef(root->right, c);
+    return 0;
+}
+
+// Função principal
+int main(void) {
+    struct Node* root = NULL;
+    int i, num;
+    int folhas = 0;
+    int nos = 0;
+    int num1 = 0;
+
+    // Semente para números aleatórios
+    srand(time(NULL));
+
+    // Gerar e inserir 10 números aleatórios na árvore
+    for (i = 0; i < 10; i++) {
+        num = rand() % 100; // Gera um número aleatório entre 0 e 99
+        printf("Inserindo o número %d\n", num);
+        root = inserir(root, num);
+    }
+
+    // Contar folhas
+    countLef(root, &folhas);
+    // Contar nós
+    countNodes(root, &nos);
+    // Achar o maior numero
+    findMax(root, &num1);
+
+    // Mostrar resultados
+    printf("Número total de folhas: %d\n", folhas);
+    // Mostrar resultados
+    printf("Número total de nós: %d\n", nos);
+    // Mostrar resultados
+    printf("Maior número: %d\n", num1);
+
+
+    return 0;
+}
